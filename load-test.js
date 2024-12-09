@@ -2,8 +2,20 @@ import http from "k6/http";
 import { sleep } from "k6";
 
 export const options = {
-  vus: 1,
-  duration: "30s",
+  stages: [
+    {
+      duration: "20s",
+      target: 1000,
+    },
+    {
+      duration: "1m",
+      target: 1000,
+    },
+    {
+      duration: "20s",
+      target: 0,
+    },
+  ],
 };
 
 export default () => {
