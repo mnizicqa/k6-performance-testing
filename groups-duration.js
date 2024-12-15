@@ -11,7 +11,7 @@ export const options = {
   },
 };
 
-export default () => {
+export default function () {
   group("Main page", () => {
     let res = http.get(
       "https://run.mocky.io/v3/fc903f7d-a71b-426a-b3fa-bf7bace31496?mocky-delay=900ms"
@@ -33,4 +33,4 @@ export default () => {
     http.get("https://run.mocky.io/v3/a07f515d-bc6c-477e-a4d0-fc86f9850d4f");
   });
   sleep(1);
-};
+}

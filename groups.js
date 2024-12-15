@@ -11,7 +11,7 @@ export const options = {
   },
 };
 
-export default () => {
+export default function () {
   group("Main page", () => {
     let res = http.get("https://test.k6.io");
     check(res, {
@@ -31,4 +31,4 @@ export default () => {
     http.get("https://test.k6.io/news.php");
   });
   sleep(1);
-};
+}

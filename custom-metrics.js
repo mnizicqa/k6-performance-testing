@@ -15,7 +15,7 @@ export const options = {
 let myCounter = new Counter("my_counter");
 let contactsPageResponseTime = new Trend("response_time_contacts_page");
 
-export default () => {
+export default function () {
   let res = http.get("https://test.k6.io");
   myCounter.add(1);
   sleep(1);
@@ -23,4 +23,4 @@ export default () => {
   res = http.get("https://test.k6.io/contacts.php");
   contactsPageResponseTime.add(res.timings.duration);
   sleep(1);
-};
+}

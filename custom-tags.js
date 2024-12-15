@@ -15,7 +15,7 @@ export const options = {
 
 let http_errors = new Counter("http_errors");
 
-export default () => {
+export default function () {
   let res = http.get(
     "https://run.mocky.io/v3/011d6b25-28c4-4933-b954-50d6c95252ca"
   );
@@ -50,4 +50,4 @@ export default () => {
   );
 
   sleep(1);
-};
+}

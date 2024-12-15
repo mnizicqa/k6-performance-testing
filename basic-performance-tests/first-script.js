@@ -6,7 +6,7 @@ export const options = {
   duration: "10s",
 };
 
-export default () => {
+export default function () {
   http.get("https://test.k6.io");
   sleep(1);
-};
+}

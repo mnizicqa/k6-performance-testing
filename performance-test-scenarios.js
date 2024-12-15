@@ -17,7 +17,7 @@ export const options = {
   },
 };
 
-export default () => {
+export default function () {
   const res = http.get(
     "https://test.k6.io/" + (exec.scenario.iterationInTest === 1 ? "foo" : "")
   );
@@ -27,4 +27,4 @@ export default () => {
       r.body.includes("Collection of simple web-pages"),
   });
   sleep(2);
-};
+}
