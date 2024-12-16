@@ -8,6 +8,8 @@ export default function () {
   const crocodileName = crocodiles[0].name;
 
   res = http.get(`https://test-api.k6.io/public/crocodiles/${crocodileId}/`);
+  console.log(res.headers["Content-Type"]);
+  console.log(res.headers["Content-Length"]);
 
   check(res, {
     "status is 200": (r) => r.status === 200,
