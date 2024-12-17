@@ -23,4 +23,25 @@ export default function () {
 
   const accessToken = res.json().access;
   console.log(accessToken);
+
+  http.get("https://test-api.k6.io/my/crocodiles/", {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  });
+
+  http.post(
+    "https://test-api.k6.io/my/crocodiles/",
+    JSON.stringify({
+      name: "Super Croc",
+      sex: "M",
+      date_of_birth: "1920-09-13",
+    }),
+    {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 }
