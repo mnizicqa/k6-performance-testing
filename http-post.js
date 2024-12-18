@@ -30,7 +30,7 @@ export default function () {
     },
   });
 
-  http.post(
+  res = http.post(
     "https://test-api.k6.io/my/crocodiles/",
     JSON.stringify({
       name: "Super Croc",
@@ -44,4 +44,17 @@ export default function () {
       },
     }
   );
+
+  const crocodileId = res.json().id;
+
+  res = http.get(`https://test-api.k6.io/my/crocodiles/${crocodileId}/`, {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  });
+
+  check(res, {
+    "status is 200": (r) => r.status === 200,
+    "crocodile id": (r) => r.json().id === crocodileId,
+  });
 }
