@@ -53,8 +53,42 @@ export default function () {
     },
   });
 
+  http.put(`https://test-api.k6.io/my/crocodiles/${crocodileId}/`,
+    JSON.stringify({
+      name: "Super Mega Croc",
+      sex: "M",
+      date_of_birth: "1920-09-13",
+    }),
+    {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json",
+      }
+    }
+  )
+
+  http.patch(`https://test-api.k6.io/my/crocodiles/${crocodileId}/`,
+    JSON.stringify({
+      sex: "F"
+    }),
+    {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json",
+      }
+    }
+  )
+
   check(res, {
     "status is 200": (r) => r.status === 200,
     "crocodile id": (r) => r.json().id === crocodileId,
   });
+
+  http.del(`https://test-api.k6.io/my/crocodiles/${crocodileId}/`,
+  null,
+    {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    }
+  })
 }
