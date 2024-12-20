@@ -4,7 +4,7 @@ import { SharedArray } from "k6/data";
 import { randomItem } from "https://jslib.k6.io/k6-utils/1.2.0/index.js";
 
 const userCredentials = new SharedArray("Users with credentials", function () {
-  return JSON.parse(open("./users.json")).users;
+  return JSON.parse(open("utilities/users.json")).users;
 });
 
 export default function () {
