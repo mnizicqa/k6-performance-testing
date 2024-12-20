@@ -12,14 +12,12 @@ export default function () {
     password: "test_" + randomString(8),
   };
 
-  console.log(credentials);
-
   http.post(
     "https://test-api.k6.io/user/register/",
     JSON.stringify(credentials),
     {
       headers: {
-        "Content-Type": "application-json",
+        "Content-Type": "application/json",
       },
     }
   );
