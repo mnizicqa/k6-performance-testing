@@ -2,11 +2,11 @@ import http from "k6/http";
 import { sleep } from "k6";
 
 export const options = {
-  vus:1,
-  duration: "10s",
+  vus: 10,
+  duration: "30s",
   cloud: {
-    projectID: 3731474
-  }
+    projectID: 3731474,
+  },
 };
 
 export default function () {
